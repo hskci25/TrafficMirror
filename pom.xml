@@ -11,7 +11,7 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>hskci25</groupId>
+	<groupId>io.github.hskci25</groupId>
 	<artifactId>TrafficMirror</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
