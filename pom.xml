@@ -13,7 +13,7 @@
 
 	<groupId>io.github.hskci25</groupId>
 	<artifactId>TrafficMirror</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<packaging>jar</packaging>
 	<name>TrafficMirror</name>
 	<description>SDK to mirror live traffic to local dev environment for debugging</description>
@@ -22,7 +22,6 @@
 	<distributionManagement>
 		<repository>
 			<id>github</id>
-			<name>GitHub Packages</name>
 			<url>https://maven.pkg.github.com/hskci25/TrafficMirror</url>
 		</repository>
 	</distributionManagement>
