@@ -11,9 +11,10 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>com.postprod</groupId>
+	<groupId>hskci25</groupId>
 	<artifactId>TrafficMirror</artifactId>
 	<version>0.0.1</version>
+	<packaging>jar</packaging>
 	<name>TrafficMirror</name>
 	<description>SDK to mirror live traffic to local dev environment for debugging</description>
 	<url>https://github.com/hskci25/TrafficMirror</url>
@@ -57,15 +58,6 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jsr310</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
 		</dependency>
 	</dependencies>
 
