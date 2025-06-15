@@ -13,11 +13,33 @@
 
 	<groupId>io.github.hskci25</groupId>
 	<artifactId>TrafficMirror</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 	<packaging>jar</packaging>
 	<name>TrafficMirror</name>
 	<description>SDK to mirror live traffic to local dev environment for debugging</description>
 	<url>https://github.com/hskci25/TrafficMirror</url>
+
+	<licenses>
+	<license>
+		<name>The MIT License</name>
+		<url>https://opensource.org/licenses/MIT</url>
+	</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>hskci25</id>
+			<name>Ashutosh Singh</name>
+			<email>ashutoshongithub@gmail.com</email>
+		</developer>
+	</developers>
+
+
+	<scm>
+		<url>https://github.com/hskci25/TrafficMirror</url>
+		<connection>scm:git:git://github.com/hskci25/TrafficMirror.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:hskci25/TrafficMirror.git</developerConnection>
+	</scm>
 
 	<distributionManagement>
 		<repository>
@@ -101,21 +123,6 @@
 						<id>attach-javadocs</id>
 						<goals>
 							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<version>3.1.0</version>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
 						</goals>
 					</execution>
 				</executions>
