@@ -36,7 +36,7 @@ public class AuditService {
             
             String auditJson = objectMapper.writeValueAsString(auditEntry);
             
-            // Log to application logs
+            // Log to application log
             logToApplicationLogs(auditJson);
             
             // Persist to audit log file if configured
