@@ -162,6 +162,8 @@ public class MirrorInterceptor implements HandlerInterceptor {
                 if (originalRequest.getQueryString() != null) {
                     targetUrl += "?" + originalRequest.getQueryString();
                 }
+
+                log.info(targetUrl);
                 
                 // Create HTTP client with security configurations
                 HttpClient client = createSecureHttpClient();
@@ -205,6 +207,7 @@ public class MirrorInterceptor implements HandlerInterceptor {
                 // Send the request
                 HttpResponse<String> httpResponse = client.send(httpRequest, 
                     HttpResponse.BodyHandlers.ofString());
+
                 
                 // Create response entity
                 return ResponseEntity
@@ -212,7 +215,7 @@ public class MirrorInterceptor implements HandlerInterceptor {
                     .body(httpResponse.body());
                     
             } catch (Exception e) {
-                log.error("Failed to mirror request to {}: {}", forwardUrl, e.getMessage(), e);
+                log.error("Failed to mirror request to {}: {} ", forwardUrl, e.toString(), e);
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("{\"error\": \"Failed to forward request: " + e.getMessage() + "\"}");
             }
