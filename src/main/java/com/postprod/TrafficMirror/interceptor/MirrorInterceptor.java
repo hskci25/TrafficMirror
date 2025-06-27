@@ -31,6 +31,7 @@ import java.security.cert.X509Certificate;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -50,6 +51,14 @@ public class MirrorInterceptor implements HandlerInterceptor {
     private static final String FORWARD_URL_HEADER = "X-Forward-Url";
     private static final ExecutorService executor = Executors.newFixedThreadPool(10);
     private static final ObjectMapper objectMapper = new ObjectMapper();
+    
+    // Headers that are restricted by Java HttpClient and should not be forwarded
+    private static final Set<String> RESTRICTED_HEADERS = Set.of(
+        "host", "content-length", "connection", "upgrade", "via", "warning",
+        "accept-encoding", "content-encoding", "transfer-encoding", "te",
+        "proxy-authenticate", "proxy-authorization", "proxy-connection",
+        "expect", "upgrade-insecure-requests"
+    );
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
@@ -242,8 +251,12 @@ public class MirrorInterceptor implements HandlerInterceptor {
     private Map<String, String> extractHeaders(HttpServletRequest request) {
         Map<String, String> headers = new HashMap<>();
         request.getHeaderNames().asIterator().forEachRemaining(headerName -> {
-            // Skip internal mirror headers
-            if (!JWT_HEADER.equals(headerName) && !FORWARD_URL_HEADER.equals(headerName)) {
+            String lowerCaseHeaderName = headerName.toLowerCase();
+            
+            // Skip internal mirror headers and restricted headers
+            if (!JWT_HEADER.equals(headerName) && 
+                !FORWARD_URL_HEADER.equals(headerName) &&
+                !RESTRICTED_HEADERS.contains(lowerCaseHeaderName)) {
                 headers.put(headerName, request.getHeader(headerName));
             }
         });
