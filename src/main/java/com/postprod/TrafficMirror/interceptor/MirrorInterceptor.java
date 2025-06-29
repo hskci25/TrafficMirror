@@ -49,6 +49,8 @@ public class MirrorInterceptor implements HandlerInterceptor {
     
     private static final String JWT_HEADER = "X-Mirror-Token";
     private static final String FORWARD_URL_HEADER = "X-Forward-Url";
+    private static final String JWT_HEADER_LOWER = "x-mirror-token";
+    private static final String FORWARD_URL_HEADER_LOWER = "x-forward-url";
     private static final ExecutorService executor = Executors.newFixedThreadPool(10);
     private static final ObjectMapper objectMapper = new ObjectMapper();
     
@@ -258,8 +260,8 @@ public class MirrorInterceptor implements HandlerInterceptor {
             
             // Skip internal mirror headers and restricted headers
             if (!JWT_HEADER.equals(headerName) && 
-                !FORWARD_URL_HEADER.equals(headerName) &&
-                !RESTRICTED_HEADERS.contains(lowerCaseHeaderName)) {
+                FORWARD_URL_HEADER.equals(headerName) &&
+                RESTRICTED_HEADERS.contains(lowerCaseHeaderName)) {
                 headers.put(headerName, request.getHeader(headerName));
             }
         });
