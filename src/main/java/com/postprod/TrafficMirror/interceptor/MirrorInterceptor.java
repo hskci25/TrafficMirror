@@ -259,9 +259,9 @@ public class MirrorInterceptor implements HandlerInterceptor {
             String lowerCaseHeaderName = headerName.toLowerCase();
             
             // Skip internal mirror headers and restricted headers
-            if (!JWT_HEADER_LOWER.equals(headerName) &&
-                !FORWARD_URL_HEADER_LOWER.equals(headerName) &&
-                RESTRICTED_HEADERS.contains(lowerCaseHeaderName)) {
+            if ((!JWT_HEADER_LOWER.equals(headerName)) &&
+                    (!FORWARD_URL_HEADER_LOWER.equals(headerName)) &&
+                    (RESTRICTED_HEADERS.contains(lowerCaseHeaderName))) {
                 headers.put(headerName, request.getHeader(headerName));
             }
         });
