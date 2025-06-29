@@ -56,7 +56,7 @@ public class MirrorInterceptor implements HandlerInterceptor {
     
     // Headers that are restricted by Java HttpClient and should not be forwarded
     private static final Set<String> RESTRICTED_HEADERS = Set.of(
-        "host", "content-length", "connection", "upgrade", "via", "warning",
+            "content-length", "connection", "upgrade", "via", "warning",
         "accept-encoding", "content-encoding", "transfer-encoding", "te",
         "proxy-authenticate", "proxy-authorization", "proxy-connection",
         "expect", "upgrade-insecure-requests"
